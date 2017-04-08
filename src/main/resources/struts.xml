@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+
+  <!-- develop  start  -->
+  <constant name="struts.devMode" value="false" />
+  <constant name="struts.serve.static.browserCache" value="false" />
+  <constant name="struts.i18n.reload" value="false" />
+  <!-- develop  end   -->
+
+
+  <!-- product  start  -->
+  <constant name="struts.enable.SlashesInActionNames" value="true" />
+  <constant name="struts.mapper.alwaysSelectFullNamespace" value="flase"></constant>
+  <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+  <constant name="struts.custom.i18n.resources" value="messages" />
+  <constant name="struts.i18n.encoding" value="UTF-8" />
+  <constant name="struts.ui.theme" value="simple" />
+  <constant name="struts.multipart.maxSize" value="1048576100" />
+  <constant name="struts.action.extension" value="htm" />
+  <!-- product  end   -->
+
+  <!--
+  <constant name="struts.objectFactory" value="spring" />
+  -->
+
+
+  <package name="soak-default" extends="struts-default">
+    <!--
+      <result-types> <result-type name="captcha" class="com.soak.framework.result.CaptchaResult" /> <result-type name="jfreechart"
+      class="com.soak.framework.result.ChartResult"></result-type> </result-types>
+    -->
+    <interceptors>
+      <interceptor-stack name="soakDefaultStack">
+        <interceptor-ref name="defaultStack" />
+      </interceptor-stack>
+    </interceptors>
+    <default-interceptor-ref name="soakDefaultStack" />
+    <global-results>
+      <result name="exception">/exception.jsp</result>
+      <result name="index">/Login/index.html</result>
+      <result name="invalid.token">/exception.jsp</result>
+    </global-results>
+    <global-exception-mappings>
+      <exception-mapping result="sqlException" exception="java.sql.SQLException"></exception-mapping>
+      <exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+    </global-exception-mappings>
+  </package>
+
+
+  <include file="modules/struts-module.xml"></include>
+
+</struts>
