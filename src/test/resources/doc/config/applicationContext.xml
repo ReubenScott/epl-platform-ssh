@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           ">
+	<!-- =======================================
+		各模块xml配置在此添加...
+	 ============================================ -->
+	<import resource="modules/common-beans.xml" />
+	
+	<!-- Spring Annotation  -->
+	<context:component-scan base-package="com.jinf..">
+	</context:component-scan>
+
+	<!-- =======================================
+		外部属性文件在此添加...
+	 ============================================ -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:db.properties</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- =======================================
+		数据库和事务定义
+	 ======================================= -->
+	<!-- 应用系统的表名称规则-->
+	<bean id="appNameStrategy" class="com.jinf.util.AppNamingStrategy" />
+
+	<!-- 配置数据源  -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${db.driverClass}" />
+		<property name="jdbcUrl" value="${db.url}" />
+		<property name="user" value="${db.user}" />
+		<property name="password" value="${db.password}" />
+		<property name="initialPoolSize" value="${pool.initialPoolSize}" />
+		<property name="minPoolSize" value="${pool.minPoolSize}" />
+		<property name="maxPoolSize" value="${pool.maxPoolSize}" />
+	</bean>
+
+	<!-- 配置数据库 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configurationClass">
+			<value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.jinf.system.domain</value>
+				<value>com.jinf.flow.domain</value>
+				<value>com.jinf.personal.domain</value>
+ 				<value>com.jinf.calendar.domain</value>
+ 				<value>com.jinf.cms.domain</value>
+ 				<value>com.jinf.assets.domain</value>
+ 				<value>com.jinf.workItems.domain</value>
+ 				<value>com.jinf.diary.domain</value>
+ 				<value>com.jinf.plan.domain</value>
+ 				<value>com.jinf.vehicle.domain</value>
+ 				<value>com.jinf.humanAffairs.domain</value>
+ 				<value>com.jinf.infoReport.domain</value>
+ 			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+            <list>
+                <value>jbpm.repository.hbm.xml</value>
+                <value>jbpm.execution.hbm.xml</value>
+                <value>jbpm.history.hbm.xml</value>
+                <value>jbpm.task.hbm.xml</value>
+                <value>jbpm.identity.hbm.xml</value>
+            </list>               
+        </property>
+		<property name="namingStrategy">
+			<ref bean="appNameStrategy" />
+		</property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="springHelper" class="org.jbpm.pvm.internal.processengine.SpringHelper" />
+	<bean id="processEngine" factory-bean="springHelper" factory-method="createProcessEngine" />
+	<!-- 数据库事务配置 
+	<aop:config>
+		<aop:pointcut id="serviceOperation"
+			expression="execution(* com..*Service.*(..))" />
+		<aop:advisor advice-ref="serviceTxAdvice" pointcut-ref="serviceOperation" />
+	</aop:config>
+	<tx:advice id="serviceTxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="stat*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<tx:method name="search*" read-only="true" />
+			<tx:method name="list*" read-only="true" />
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice> -->
+</beans>

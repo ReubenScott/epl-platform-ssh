@@ -1,4 +1,4 @@
-package com.soak.framework.orm.hibernate;
+package com.soak.sshframe.orm.hibernate;
 
 import org.hibernate.cfg.ImprovedNamingStrategy;
 import org.hibernate.cfg.NamingStrategy;

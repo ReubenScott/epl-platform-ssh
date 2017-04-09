@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="jinf-default" extends="struts-default">
+		<global-results>
+			<result name="exception">/exception.jsp</result>
+			<result name="index">/index.jsp</result>
+			<result name="select">/Select/select.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="sqlException" exception="java.sql.SQLException"></exception-mapping>
+			<exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+	</package>
+	<package name="System" namespace="/System" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.system.web.{1}Action" method="{2}">
+			<result name="list">/System/{1}/list.jsp</result>
+			<result name="addrBook">/System/{1}/addrBook.jsp</result>
+			<result name="edit">/System/{1}/edit.jsp</result>
+			<result name="editMe">/System/{1}/editMe.jsp</result>
+			<result name="editPassword">/System/{1}/editPassword.jsp</result>
+			<result name="view">/System/{1}/view.jsp</result>
+			<result name="webconfig">/System/UserManage/webconfig/webconfig.jsp</result>
+		</action>
+	</package>
+	<package name="Capital" namespace="/Capital" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.capital.web.{1}Action" method="{2}">
+			<result name="list">/Capital/{1}/list.jsp</result>
+			<result name="list2">/Capital/{1}/list2.jsp</result>
+			<result name="edit">/Capital/{1}/edit.jsp</result>
+			<result name="view">/Capital/{1}/view.jsp</result>
+		</action>
+	</package>
+	<package name="Flow" namespace="/Flow" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.flow.web.{1}Action" method="{2}">
+			<result name="list">/Flow/{1}/list.jsp</result>
+			<result name="list2">/Flow/{1}/list2.jsp</result>
+			<result name="edit">/Flow/{1}/edit.jsp</result>
+			<result name="task">/Flow/{1}/task.jsp</result>
+			<result name="sub">/Flow/{1}/sub.jsp</result>
+			<result name="editDoc">/Flow/{1}/editDoc.jsp</result>
+			<result name="view">/Flow/{1}/view.jsp</result>
+			<result name="apply">/Flow/{1}/apply.jsp</result>
+			<result name="advance">/Flow/{1}/advance.jsp</result>
+			<result name="listZb">/Flow/{1}/listZb.jsp</result>
+			<result name="listDbRole">/Flow/{1}/listDbRole.jsp</result>
+			<result name="listDbUser">/Flow/{1}/listDbUser.jsp</result>
+			<result name="listDoc">/Flow/{1}/listDoc.jsp</result>
+			<result name="listDbOrg">/Flow/{1}/listDbOrg.jsp</result>
+			<result name="listYb">/Flow/{1}/listYb.jsp</result>
+			<result name="taskUserEdit">/Flow/{1}/taskUserEdit.jsp</result>
+			<result name="taskUserPage">/Flow/{1}/taskUserPage.jsp</result>
+			<result name="viewDoc">/Flow/{1}/viewDoc.jsp</result>
+			<result name="design">/Flow/{1}/design.jsp</result>
+			<result name="power">/Flow/{1}/power.jsp</result>
+			<result name="printForm">/Flow/{1}/printForm.jsp</result>
+			<result name="printReadForm">/Flow/{1}/printReadForm.jsp</result>
+			<result name="gz">/Flow/{1}/gz.jsp</result>
+			<result name="djd">/Flow/{1}/djd.jsp</result>
+			<result name="listDjd">/Flow/{1}/listDjd.jsp</result>
+			<result name="listGz">/Flow/{1}/listGz.jsp</result>
+			<result name="reportSearch">/Flow/{1}/reportSearch.jsp</result>
+		</action>
+	</package>
+	<package name="cms" namespace="/cms" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.cms.web.{1}Action"
+			method="{2}">
+			<result name="list">/cms/{1}/list.jsp</result>
+			<result name="edit">/cms/{1}/edit.jsp</result>
+			<result name="check">/cms/{1}/check.jsp</result>
+			<result name="view">/cms/{1}/view.jsp</result>
+			<result name="listModule">/cms/{1}/listModule.jsp</result>
+			<result name="listNeedCheck">/cms/{1}/listNeedCheck.jsp</result>
+			<result name="content">/cms/{1}/content.jsp</result>
+			<result name="userconfig">/cms/Module/userconfig.jsp</result>
+			<result name="pageitemConfig">/cms/PageItem/userconfig.jsp</result>
+		</action>
+	</package>
+    
+	<package name="Login" namespace="/" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.system.web.{1}Action" method="{2}">
+			<result name="main">/main.jsp</result>
+			<result name="userhome">/userHome.jsp</result>
+			<result name="menu">/menu.jsp</result>
+		</action>
+	</package>
+	<package name="Personal" namespace="/Personal" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.personal.web.{1}Action" method="{2}">
+			<result name="draft">/Personal/{1}/draft.jsp</result>
+			<result name="send">/Personal/{1}/send.jsp</result>
+			<result name="receive">/Personal/{1}/receive.jsp</result>
+			<result name="edit">/Personal/{1}/edit.jsp</result>
+			<result name="list">/Personal/{1}/list.jsp</result>
+			<result name="view">/Personal/{1}/view.jsp</result>
+		</action>
+	</package>
+	
+	<!-- SHENLF 2010/12/05,新規作成  -->
+	<package name="Assets" namespace="/Assets" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.assets.web.{1}Action" method="{2}">
+			<result name="list">/Assets/{1}/list.jsp</result>
+			<result name="edit">/Assets/{1}/edit.jsp</result>
+			<result name="view">/Assets/{1}/view.jsp</result>
+			<result name="listScrap">/Assets/{1}/listScrap.jsp</result>
+			<result name="listMain">/Assets/{1}/listMain.jsp</result>
+			<result name="editMain">/Assets/{1}/editMain.jsp</result>
+			<result name="listEqui">/Assets/{1}/listEquipment.jsp</result>
+			<result name="listPment">/Assets/{1}/listEqui.jsp</result>
+			<result name="Errors">/Assets/{1}/Errors.jsp</result>
+			<result name="listTree">/Assets/{1}/list.jsp</result>
+		</action>
+	</package>
+
+	<package name="WorkItems" namespace="/WorkItems" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.workItems.web.{1}Action" method="{2}">			
+			<result name="searchResult">/WorkItems/TaskManage/searchResult.jsp</result>
+			<result name="list">/WorkItems/TaskManage/list.jsp</result>
+			<result name="new">/WorkItems/TaskManage/new.jsp</result>
+			<result name="toDo">/WorkItems/TaskManage/pending.jsp</result>
+			<result name="processing">/WorkItems/TaskManage/processing.jsp</result>
+			<result name="viewCompleted">/WorkItems/TaskManage/viewCompleted.jsp</result>			
+			<result name="viewProcessing">/WorkItems/TaskManage/viewProcessing.jsp</result>			
+			<result name="recipient">/WorkItems/TaskManage/recipient.jsp</result>			
+			<result name="receive">/WorkItems/TaskManage/accepted.jsp</result>			
+			<result name="completed">/WorkItems/TaskManage/completed.jsp</result>	
+			<result name="initial">/WorkItems/TaskManage/viewByInitial.jsp</result>	
+			<result name="viewDistributed">/WorkItems/TaskManage/viewDistributed.jsp</result>	
+			<result name="completedBySelf">/WorkItems/TaskManage/completedBySelf.jsp</result>						
+			<result name="TaskOwnerProcessing">/WorkItems/TaskManage/TaskOwnerProcessing.jsp</result>	
+			<result name="myTasks" type="redirect">/WorkItems/{1}/myTasks</result>
+			<result name="completedTasks" type="redirect">/WorkItems/{1}/completedTasks</result>
+		</action>
+	</package>
+	
+	<package name="Report" namespace="/Report" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.workItems.web.{1}Action" method="{2}">	
+		    <result name="list" type="redirect">/Report/{1}/list</result>
+		    <result name="pending" type="redirect">/Report/{1}/pending</result>
+		    <result name="draft" type="redirect">/Report/{1}/draft</result>
+			<result name="success">/WorkItems/{1}/{2}.jsp</result>				
+			<result name="searchlist">/WorkItems/{1}/list.jsp</result>				
+			<result name="searchpending">/WorkItems/{1}/pending.jsp</result>				
+			<result name="searchdraft">/WorkItems/{1}/draft.jsp</result>				
+		</action>
+	</package>
+	
+	<package name="HumanAffairs" namespace="/HumanAffairs" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.humanAffairs.web.{1}Action" method="{2}">	
+		    <result name="success">/HumanAffairs/{1}/{2}.jsp</result>	
+		    <result name="list" type="redirect">/HumanAffairs/{1}/list</result>
+		</action>
+	</package>
+	
+	<package name="InfoReport" namespace="/InfoReport" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.infoReport.web.{1}Action" method="{2}">	
+		    <result name="success">/InfoReport/{1}/{2}.jsp</result>	
+		    <result name="list" type="redirect">/InfoReport/{1}/list</result>
+		</action>
+	</package>
+	
+	<package name="Calendar" namespace="/Calendar" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*" class="com.jinf.calendar.web.CalendarAction"
+			method="{1}">
+			<result name="calendar">/Calendar/calendar.jsp</result>
+			<result name="day">/Calendar/day.jsp</result>
+			<result name="week">/Calendar/week.jsp</result>
+			<result name="month">/Calendar/month.jsp</result>
+			<result name="days">/Calendar/days.jsp</result>
+			<result name="agenda">/Calendar/agenda.jsp</result>
+			<result name="event">/Calendar/event.jsp</result>
+			<result name="naviMonth">/Calendar/naviMonth.jsp</result>
+			<result name="calendarForMainJsp">/Calendar/calendarForMainJsp.jsp</result>
+		</action>
+	</package>
+	
+    <!--	chencj,2010-12-08		-->
+	<package name="Diary" namespace="/Diary" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*" class="com.jinf.diary.web.DiaryAction" method="{1}">
+			<result name="list">/Diary/diary.jsp</result>	
+			<result name="gList">/Diary/globalDiary.jsp</result>
+			<result name="gdList">/Diary/globalDiaryDetail.jsp</result>	
+			<result name="sdList">/Diary/shareDiary.jsp</result>		
+			<result name="newDiary">/Diary/newDiary.jsp</result>
+			<result name="view">/Diary/diaryView.jsp</result>	
+			<result name="select">/Select/select.jsp</result>	
+			<result name="edit">/Diary/edit.jsp</result>	
+		</action>		
+	</package>
+    <!--	chencj,2010-12-29		-->
+	<package name="Plan" namespace="/Plan" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*" class="com.jinf.plan.web.PlanAction" method="{1}">
+			<result name="list">/Plan/list.jsp</result>	
+			<result name="gList">/Plan/globalPlan.jsp</result>
+			<result name="gpList">/Plan/globalPlanDetail.jsp</result>	
+			<result name="spList">/Plan/sharePlan.jsp</result>		
+			<result name="newPlan">/Plan/newPlan.jsp</result>
+			<result name="view">/Plan/planView.jsp</result>	
+		</action>		
+	</package>
+	
+	<package name="Vehicle" namespace="/Vehicle" extends="jinf-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jinf.vehicle.web.{1}Action" method="{2}">
+			<result name="showVehicleList">/Vehicle/VehicleArchive/vehicleList.jsp</result>
+			<result name="editjqx">/Vehicle/VehicleInsurance/addjqx.jsp</result>
+			<result name="editsyx">/Vehicle/VehicleInsurance/addsyx.jsp</result>
+			<result name="scrap">/Vehicle/VehicleArchive/scrap.jsp</result>
+			<result name="UseTask">/Vehicle/VehicleUse/useTaskList.jsp</result>
+			<result name="list">/Vehicle/{1}/list.jsp</result>
+			<result name="view">/Vehicle/{1}/view.jsp</result>
+			<result name="edit">/Vehicle/{1}/add.jsp</result>
+		</action>
+	</package>
+
+</struts>
