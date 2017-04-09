@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+  <package name="system" namespace="/system" extends="soak-default">
+    <default-interceptor-ref name="paramsPrepareParamsStack" />
+    <action name="*/*" class="com.soak.system.action.{1}Action" method="{2}">
+      <result name="list">/System/{1}/list.jsp</result>
+      <result name="addrBook">/System/{1}/addrBook.jsp</result>
+      <result name="edit">/System/{1}/edit.jsp</result>
+      <result name="editMe">/System/{1}/editMe.jsp</result>
+      <result name="editPassword">/System/{1}/editPassword.jsp</result>
+      <result name="view">/System/{1}/view.jsp</result>
+      <result name="webconfig">/System/UserManage/webconfig/webconfig.jsp</result>
+    </action>
+  </package>
+
+
+
+</struts>

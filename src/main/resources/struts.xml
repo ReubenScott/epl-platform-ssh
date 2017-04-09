@@ -16,6 +16,8 @@
   <constant name="struts.enable.SlashesInActionNames" value="true" />
   <constant name="struts.mapper.alwaysSelectFullNamespace" value="flase"></constant>
   <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+  <constant name="struts.objectFactory" value="spring" />
+  
   <constant name="struts.custom.i18n.resources" value="messages" />
   <constant name="struts.i18n.encoding" value="UTF-8" />
   <constant name="struts.ui.theme" value="simple" />
@@ -24,7 +26,6 @@
   <!-- product  end   -->
 
   <!--
-  <constant name="struts.objectFactory" value="spring" />
   -->
 
 
@@ -51,6 +52,6 @@
   </package>
 
 
-  <include file="modules/struts-module.xml"></include>
+  <include file="struts/struts-module.xml"></include>
 
 </struts>

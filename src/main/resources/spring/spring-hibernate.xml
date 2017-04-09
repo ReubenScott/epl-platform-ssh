@@ -6,8 +6,8 @@
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-  <!-- 应用系统的表名称规则
-  <bean id="appNameStrategy" class="com.jinf.util.AppNamingStrategy" />  -->
+  <!-- 应用系统的表名称规则 -->
+  <bean id="appNameStrategy" class="com.soak.framework.orm.hibernate.UnderscoreNamingStrategy" />
 
   <!-- 配置数据库 -->
   <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -18,24 +18,13 @@
     <!--指定进行了Hibernate注解开发的包，方便框架进行扫描设置-->
     <property name="packagesToScan">
       <list>
-        <value>com.jinf.system.domain</value>
-        <value>com.jinf.flow.domain</value>
-        <value>com.jinf.personal.domain</value>
-        <value>com.jinf.calendar.domain</value>
-        <value>com.jinf.cms.domain</value>
-        <value>com.jinf.assets.domain</value>
-        <value>com.jinf.workItems.domain</value>
-        <value>com.jinf.diary.domain</value>
-        <value>com.jinf.plan.domain</value>
-        <value>com.jinf.vehicle.domain</value>
-        <value>com.jinf.humanAffairs.domain</value>
-        <value>com.jinf.infoReport.domain</value>
+        <value>com.*.**.model</value>
       </list>
     </property>
     <property name="hibernateProperties">
       <props>
         <!-- 数据模式    <prop key="hibernate.default_schema">${jdbc.schema}</prop>  -->
-        <prop key="hibernate.default_schema">${jdbc.schema}</prop> 
+        <prop key="hibernate.default_schema">${jdbc.schema}</prop>
         <!--  数据库方言  -->
         <prop key="hibernate.dialect">${hibernate.dialect}</prop>
         <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
@@ -49,10 +38,9 @@
         -->
       </list>
     </property>
-    <!--<property name="namingStrategy">
+    <property name="namingStrategy">
       <ref bean="appNameStrategy" />
     </property>
-  -->
   </bean>
 
   <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">

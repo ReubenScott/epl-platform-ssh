@@ -129,6 +129,18 @@
       <artifactId>commons-dbcp</artifactId>
     </dependency>
 
+    <!-- excel start -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+    </dependency>
+    <!-- excel end -->
+
+
     <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
@@ -178,8 +190,45 @@
           </compilerArguments>
         </configuration>
       </plugin>
+
+
+    <!-- 
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>hibernate3-maven-plugin</artifactId>
+        <version>2.1</version>
+        <executions>
+          <execution>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>hbm2ddl</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <components>
+            <component>
+              <name>hbm2ddl</name>
+              <implementation>annotationconfiguration</implementation>
+            </component>
+            <component>
+              <name>hbmdoc</name>
+            </component>
+          </components>
+          <componentProperties>
+            <configurationfile>/target/classes/hibernate.cfg.xml</configurationfile>
+            <outputfilename>schema.ddl</outputfilename>
+            <namingstrategy>mycompany.myapp.IRDNamingStrategy</namingstrategy>
+            <drop>false</drop>
+            <create>true</create>
+            <export>false</export>
+            <format>true</format>
+          </componentProperties>
+        </configuration>
+      </plugin>
+    -->
+ 
     </plugins>
   </build>
-
 
 </project>
