@@ -7,7 +7,7 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
   <!-- 应用系统的表名称规则 -->
-  <bean id="appNameStrategy" class="com.soak.framework.orm.hibernate.UnderscoreNamingStrategy" />
+  <bean id="appNameStrategy" class="com.soak.sshframe.orm.hibernate.UnderscoreNamingStrategy" />
 
   <!-- 配置数据库 -->
   <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

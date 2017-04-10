@@ -3,6 +3,9 @@ package com.soak.sshframe.orm.hibernate;
 import org.hibernate.cfg.ImprovedNamingStrategy;
 import org.hibernate.cfg.NamingStrategy;
 
+/**
+ * 数据库 表名称、 字段名称  命名策略
+ */
 public class UnderscoreNamingStrategy extends ImprovedNamingStrategy implements NamingStrategy {
   private static final long serialVersionUID = 1L;
 

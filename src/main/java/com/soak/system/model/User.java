@@ -15,13 +15,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import com.soak.common.constant.EGenderType;
+import com.soak.common.constant.GenderType;
 import com.soak.common.constant.ValidFlag;
 
 
@@ -149,7 +148,7 @@ public class User implements Serializable {
 	}
 
 	@Enumerated(value = EnumType.STRING)
-	private EGenderType sex;
+	private GenderType sex;
 
 	@Column
 	private Integer age;
@@ -249,11 +248,11 @@ public class User implements Serializable {
 		this.address = address;
 	}
 
-	public EGenderType getSex() {
+	public GenderType getSex() {
 		return sex;
 	}
 
-	public void setSex(EGenderType sex) {
+	public void setSex(GenderType sex) {
 		this.sex = sex;
 	}
 

@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import com.soak.common.json.JsonUtil;
 import com.soak.sshframe.action.BaseAction;
-import com.soak.system.service.ISysManageService;
 
 public class SysManageAction extends BaseAction {
 
